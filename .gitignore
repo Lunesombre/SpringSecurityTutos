@@ -37,4 +37,4 @@ mvnw
 mvnw.cmd
 .mvn/*
 src/main/resources/application-default.properties
-application-default.properties
+src/main/resources/application-local.properties

@@ -3,7 +3,6 @@ package tutos.springsecuritytuto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
@@ -17,11 +16,12 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-@Profile("default")
 public class WebSecurityConfig {
 
     @Value("${USER_PASSWORD}")
     private String userPassword;
+    @Value("${USER_NAME}")
+    private String userName;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -43,7 +43,7 @@ public class WebSecurityConfig {
     public UserDetailsService userDetailsService() {
         UserDetails user =
                 User.builder()
-                        .username("user")
+                        .username(userName)
                         .password(passwordEncoder().encode(userPassword))
                         .roles("USER")
                         .build();
