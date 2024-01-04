@@ -30,7 +30,10 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/", "/home")
-                        .permitAll().anyRequest()
+                        .permitAll()
+                        .requestMatchers("/secret")
+                        .hasRole("SCHTROUMPF")
+                        .anyRequest()
                         .authenticated()
                 )
                 .formLogin(form -> form.loginPage("/login")

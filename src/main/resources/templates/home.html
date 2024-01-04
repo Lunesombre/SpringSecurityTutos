@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
-  <title>Spring Security Example</title>
+    <title>Spring Security Example</title>
 </head>
 <body>
 <h1>Welcome!</h1>
 
 <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
+
+<div th:if="${#authorization.expression('hasRole(''SCHTROUMPF'')')}">
+    <a th:href="@{/secret}">Secret Page</a>
+</div>
+
+<div th:if="${#authorization.expression('isAuthenticated()')}">
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
 </body>
 </html>
