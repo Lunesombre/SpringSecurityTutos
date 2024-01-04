@@ -36,3 +36,5 @@ build/
 mvnw
 mvnw.cmd
 .mvn/*
+src/main/resources/application-default.properties
+application-default.properties
