@@ -43,7 +43,6 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-    // provides a default User
     @Bean
     public UserDetailsService userDetailsService() {
         // J'ai fait cette modif pour pouvoir accepter plusieurs roles pour un user. User.builder().roles() attend un String[] : on lui en fournit un oupas, s'il n'en a pas ou bien un vide il attribue "USER", sachant que derrière, ça transforme les roles en Granted Authorities =[ROLE_NOMDUROLE]
